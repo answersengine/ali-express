@@ -9,6 +9,9 @@ product['url'] = page['vars']['url']
 #extract title
 product['title'] = nokogiri.at_css('.product-name').text.strip
 
+#extract product image
+product['image_url'] = nokogiri.at_css('#magnifier img')['src']
+
 #extract discount price
 discount_element = nokogiri.at_css('span#j-sku-discount-price')
 if discount_element
@@ -18,6 +21,17 @@ if discount_element
     product['discount_high_price'] = discount_element.css('span').find{|span| span['itemprop'] == 'highPrice' }.text.to_f
   else
     product['discount_price'] = discount_element.text.to_f
+  end
+end
+
+#extract original price
+price_element = nokogiri.at_css('#j-sku-price')
+if price_element
+  price_array = price_element.text.strip.split('-')
+  if price_array.size > 1
+    product['original_low_price'], product['original_high_price'] = price_array.map{|price| price.strip.to_f }
+  else
+    product['original_price'] = price_array.first.strip.to_f
   end
 end
 
