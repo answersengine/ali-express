@@ -10,6 +10,7 @@ products.each do |product|
       pages << {
           url: url,
           page_type: 'products',
+          fetch_type: 'browser',
           vars: {
             url: url
           }
