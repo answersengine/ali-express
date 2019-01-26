@@ -11,6 +11,7 @@ products.each do |product|
           url: url,
           page_type: 'products',
           fetch_type: 'browser',
+          force_fetch: true,
           vars: {
             url: url
           }
