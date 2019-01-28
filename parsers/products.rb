@@ -71,11 +71,10 @@ if order_count_element
 end
 
 #extract shipping info
-#shipping_element = nokogiri.at_css('dl#j-product-shipping')
-#if shipping_element
-  #looks like this is added with javascript
-  #raise shipping_element.text.inspect
-#end
+shipping_element = nokogiri.at_css('dl#j-product-shipping')
+if shipping_element
+  product['shipping_info'] = shipping_element.text.strip.gsub(/\s\s+/, ' ')
+end
 
 #extract return policy
 return_element = nokogiri.at_css('#j-seller-promise-list')
@@ -84,11 +83,10 @@ if return_element
 end
 
 #extract guarantee
-#may require javascript
-#guarantee_element = nokogiri.at_css('#serve-guarantees-detail')
-#if guarantee_element
-#  raise guarantee_element.text.strip.inspect
-#end
+guarantee_element = nokogiri.at_css('#serve-guarantees-detail')
+if guarantee_element
+  product['guarantee'] = guarantee_element.text.strip.gsub(/\s\s+/, ' ').gsub!(/\"/,"").inspect
+end
 
 # specify the collection where this record will be stored
 product['_collection'] = "products"
