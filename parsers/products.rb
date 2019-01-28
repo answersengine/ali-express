@@ -58,8 +58,10 @@ end
 #extract rating and reviews
 rating_element = nokogiri.at_css('span.ui-rating-star')
 if rating_element
-  product['rating'] = rating_element.css('span').find{|span| span['itemprop'] == 'ratingValue' }.text.strip.to_f
-  product['reviews_count'] = rating_element.css('span').find{|span| span['itemprop'] == 'reviewCount' }.text.strip.to_i
+  rating_value = rating_element.css('span').find{|span| span['itemprop'] == 'ratingValue' }
+  product['rating'] = rating_value.text.strip.to_f if rating_value
+  review_count = rating_element.css('span').find{|span| span['itemprop'] == 'reviewCount' }
+  product['reviews_count'] = review_count.text.strip.to_i if review_count
 end
 
 #extract orders count
