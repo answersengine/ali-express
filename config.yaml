@@ -8,3 +8,6 @@ parsers:
  - page_type: products
    file: ./parsers/products.rb
    disabled: false
+exporters:
+ - file: ./exporters/products_json.yaml
+   disabled: false
