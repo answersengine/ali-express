@@ -85,7 +85,7 @@ end
 #extract guarantee
 guarantee_element = nokogiri.at_css('#serve-guarantees-detail')
 if guarantee_element
-  product['guarantee'] = guarantee_element.text.strip.gsub(/\s\s+/, ' ').gsub!(/\"/,"").inspect
+  product['guarantee'] = guarantee_element.text.strip.gsub(/\s\s+/, ' ')
 end
 
 # specify the collection where this record will be stored
