@@ -1,0 +1,35 @@
+exporter_name: products_csv
+exporter_type: csv
+collection: products
+no_headers: false
+offset: 0
+order: desc
+fields:
+ - header: "gid"
+   path: "_gid"
+ - header: "created at"
+   path: "_created_at"
+ - header: "title"
+   path: "title"
+ - header: "url"
+   path: "url"
+ - header: "categories"
+   path: "categories"
+ - header: "discount price"
+   path: "discount_price"
+ - header: "original high price"
+   path: "original_high_price"
+ - header: "original low price"
+   path: "original_low_price"
+ - header: "original price"
+   path: "original_price"
+ - header: "rating"
+   path: "rating"
+ - header: "reviews count"
+   path: "reviews_count"
+ - header: "shipping info"
+   path: "shipping_info"
+ - header: "sizes"
+   path: "sizes"
+ - header: "skus"
+   path: "skus"
