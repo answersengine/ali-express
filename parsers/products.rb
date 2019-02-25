@@ -6,6 +6,9 @@ product = {}
 #save the url
 product['url'] = page['vars']['url']
 
+#save the category
+product['category'] = page['vars']['category']
+
 #extract title
 product['title'] = nokogiri.at_css('.product-name').text.strip
 

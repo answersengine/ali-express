@@ -13,6 +13,7 @@ products.each do |product|
           fetch_type: 'browser',
           force_fetch: true,
           vars: {
+            category: page['vars']['category'],
             url: url
           }
         }
